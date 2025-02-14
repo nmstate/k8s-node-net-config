@@ -300,6 +300,10 @@ func resetPrimaryAndSecondaryNICs() nmstate.State {
 `, primaryNic, firstSecondaryNic, secondSecondaryNic))
 }
 
+func expectedNicsInitialState() []byte {
+	return []byte(fmt.Sprintf(`{"%s": "up", "%s": "up", "%s": "up"}`, primaryNic, firstSecondaryNic, secondSecondaryNic))
+}
+
 func bridgeOnTheSecondaryInterfaceState() nmstate.State {
 	return nmstate.NewState(`interfaces:
   - name: brext
